@@ -6,7 +6,10 @@ const Canvas = require('canvas')
 
 module.exports = class StatsCommand extends Command {
   constructor () {
-    super()
+    super({
+      name: 'Stats',
+      description: 'Look at and edit the stats of NB!',
+    })
   }
 
   async run (message, channel, args) {
@@ -29,19 +32,6 @@ module.exports = class StatsCommand extends Command {
 
   async commandGet(message, channel) {
     const {wins, losses} = await db.getStats()
-    // TODO: Remove this old dumb code when I'm satisfied with new kewl code
-//     const t = wins < losses ?
-//       Math.max(wins / losses - 0.5, 0) :
-//       Math.min((wins - losses) / (2 * losses) + 0.5, 1)
-//     const hue = 0 + t * (120 - 0)
-//     const color = new Color.fromHSL(Math.round(hue), 100, 70)
-//     const embed = new RichEmbed()
-//       .setTitle('NB! Stats')
-//       .setAuthor(message.author.username, message.author.avatarURL)
-//       .setColor(parseInt(color.to('HEX').slice(1), 16))
-//       .setDescription(`Wins: ${wins}
-// Losses: ${losses}`)
-//     channel.sendEmbed(embed)
     const canvas = new Canvas(400, 250)
     const ctx = canvas.getContext('2d')
 
@@ -299,8 +289,14 @@ module.exports = class StatsCommand extends Command {
     let state = 'none'
     let target = 'none'
     let command = {
-      wins: {},
-      losses: {},
+      wins: {
+        op: '+',
+        val: 0
+      },
+      losses: {
+        op: '+',
+        val: 0
+      },
     }
     for (let i in args) {
       if (args.hasOwnProperty(i)) {
