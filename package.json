@@ -1,0 +1,18 @@
+{
+  "name": "corda-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "canvas": "^1.6.5",
+    "discord-corda": "^1.2.0",
+    "easy-color": "^1.0.4",
+    "mongodb": "^2.2.26"
+  }
+}
