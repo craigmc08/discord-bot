@@ -1,7 +1,7 @@
 const corda = require('discord-corda')
 const colors = require('colors')
 const path = require('path')
-const keys = require('./keys')
+const keys = require('../keys')
 const db = require('./src/database.js')
 
 db.connect().then(() => {
